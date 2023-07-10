@@ -1,8 +1,9 @@
-package repository;
+package SMS.controller;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import entity.Student;
+import SMS.Student;
+
 
 public interface IStudentRepository extends JpaRepository <Student,Integer>{
 
