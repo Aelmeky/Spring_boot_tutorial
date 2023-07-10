@@ -36,6 +36,12 @@ public class StudentServiceImp implements IStudentService {
 	public Student getStudentById(Integer id) {
 		return studentrepo.findById(id).get();
 	}
+
+	@Override
+	public void deleteStudentById(Integer id) {
+		studentrepo.deleteById(id);
+		
+	}
 	
 
 }
