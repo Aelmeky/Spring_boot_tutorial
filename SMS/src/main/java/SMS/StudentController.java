@@ -43,12 +43,23 @@ public class StudentController {
 		return "create_student";
 	}
 	
-	@GetMapping("/student/edit/{id}")
+	@GetMapping("/students/edit/{id}")
 	public String editStudentForm(@PathVariable Integer id, Model model) {
 		model.addAttribute("student", studentService.getStudentById(id));
 		return "edit_student";
 	}
 	
-
+	@PostMapping("/students/{id}")
+	public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") Student student
+			, Model model) {
+		
+		Student exstudent = studentService.getStudentById(id);
+		exstudent.setId(id);
+		exstudent.setFirstName(student.getFirstName());
+		exstudent.setLastName(student.getLastName());
+		exstudent.setEmail(student.getEmail());
+		studentService.updateStudent(exstudent);
+		return "redirect:/students"; 
+	}
 }
 
